@@ -98,7 +98,7 @@
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
-       
+      
         
         // Init data
         $data =[
@@ -164,7 +164,7 @@
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
       $_SESSION['user_name'] = $user->name;
-      redirect('posts');
+      redirect('posts/dashboard');
     }
 
     public function logout(){

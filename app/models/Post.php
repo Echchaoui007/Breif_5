@@ -15,12 +15,14 @@ return $results;
 
 
 public function  addProducts($data){
-        $this->db->query('INSERT INTO items(name_product,quantite_product,price_product,img_product) VALUES (`:name`, :quantite, :prix , `:image`)');
 
-        $this->db->bind(':name', $data['name_product']);
-        $this->db->bind(':quantite', $data['quantite_product']);
-        $this->db->bind(':prix', $data['price_product']);
-        $this->db->bind(':image', $data['img_product']);
+    // $this->db->query(" INSERT INTO `items`( `name_product`, `quantite_product`, `price_product`, `img_product`) VALUES (':namee',':quantite',':prix',':image')");
+     $this->db->query('INSERT INTO `items`( `name_product`, `quantite_product`, `price_product`, `img_product`)  VALUES (:name, :quantite, :prix ,:image)');
+        $this->db->bind(":name", $data['name_product']);
+        $this->db->bind(":quantite", $data['quantite_product']);
+        $this->db->bind(":prix", $data['price_product']);
+        $this->db->bind(":image", $data['img_product']);
+       
 
         if ($this->db->execute()) {
             return true;
