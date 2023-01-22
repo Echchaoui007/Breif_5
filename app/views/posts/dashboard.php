@@ -9,7 +9,7 @@
 
 
 
-<div class="container">
+<div class="container">jpeg
   <h1>Product Dashboard</h1>
   <form method="post" action="<?php echo URLROOT; ?>/pages/add" enctype="multipart/form-data">
     <div class="form-group">
