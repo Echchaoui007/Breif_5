@@ -61,11 +61,12 @@
       if(empty($data['img_product'])){
         $data['img_product_err'] = 'Please enter Image';
       }
-
+      //make sure no errors
       if (empty($data['name_product_err']) && empty($data['quantite_product_err']) && empty($data['price_product_err']) && empty($data['img_product_err'])) {
                       if ($this->postModel->addProducts($data)) {
         redirect("posts/dashboard");
       } else {
+        //load the view
         $this->view('posts/dashboard', $data);
       }
                 

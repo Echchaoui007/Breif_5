@@ -18,7 +18,8 @@
     </div>
     <div class="form-group">
       <label for="productQuantity">Product Quantity:<sup>*<sup></label>
-      <input required min="1" type="number" class="form-control" name="quantite" id="productQuantity">
+      <input  min="1" type="number" 
+       class="form-control <?php echo(!empty($date['name_product_err'])  ? 'is-invalid' : ''); ?> " name="quantite" id="productQuantity" >
     </div>
 
     <div class="form-group">
