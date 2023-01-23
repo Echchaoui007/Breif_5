@@ -9,37 +9,67 @@
 
 
 
-<div class="container">jpeg
+<div class="container">
   <h1>Product Dashboard</h1>
-  <form method="post" action="<?php echo URLROOT; ?>/pages/add" enctype="multipart/form-data">
-    <div class="form-group">
-      <label for="productName">Product Name:<sup>*<sup></label>
-      <input type="text" name="prod_name" class="form-control" id="productName" required>
-    </div>
-    <div class="form-group">
-      <label for="productQuantity">Product Quantity:<sup>*<sup></label>
-      <input  min="1" type="number" 
-       class="form-control <?php echo(!empty($date['name_product_err'])  ? 'is-invalid' : ''); ?> " name="quantite" id="productQuantity" >
-    </div>
+  <form method="post" action="<?php echo URLROOT; ?>/posts/add" enctype="multipart/form-data">
+    <div id="add1">
+      <div class="form-group">
+        <label for="productName">Product Name:<sup>*<sup></label>
+        <input type="text" name="prod_name" id="productName" class="form-control ">
 
-    <div class="form-group">
-      <label for="productPrice">Product Price:<sup>*<sup></label>
-      <input required min="0" type="number" name="price" class="form-control" id="productPrice">
-    </div>
+      </div>
+      <div class="form-group">
+        <label for="productQuantity">Product Quantity:<sup>*<sup></label>
+        <input min="1" type="number" name="quantite" id="productQuantity" class="form-control">
+      </div>
 
-    <div class="form-group">
-      <label for="productDescription">Image:<sup>*<sup></label>
-      <input required type="file" name="img" class="form-control" id="productDescription" accept="image/png, image/jpeg, image/jpg"></input>
-    </div>
+      <div class="form-group">
+        <label for="productPrice">Product Price:<sup>*<sup></label>
+        <input min="0" type="number" name="price" class="form-control" id="productPrice">
+      </div>
 
-    <button type="submit" value="submit" class="btn btn-success">Submit</button>
+      <div class="form-group">
+        <label for="productDescription">Image:<sup>*<sup></label>
+        <input type="file" name="img" class="form-control" id="productDescription" accept="image/png, image/jpeg, image/jpg"></input>
+      </div>
+
+      <button class="btn btn-success" onclick="add()" id="addNewProduct">Add new product</button>
+    </div>
+    <div id="add2" style="display: none;">
+      <div class="form-group">
+        <label for="productName">Product Name:<sup>*<sup></label>
+        <input type="text" name="prod_name1" id="productName" class="form-control ">
+
+      </div>
+      <div class="form-group">
+        <label for="productQuantity">Product Quantity:<sup>*<sup></label>
+        <input min="1" type="number" name="quantite1" id="productQuantity" class="form-control " required>
+      </div>
+
+      <div class="form-group">
+        <label for="productPrice">Product Price:<sup>*<sup></label>
+        <input required min="0" type="number" name="price1" class="form-control" id="productPrice">
+      </div>
+
+      <div class="form-group">
+        <label for="productDescription">Image:<sup>*<sup></label>
+        <input required type="file" name="img1" class="form-control" id="productDescription" accept="image/png, image/jpeg, image/jpg"></input>
+      </div>
+
+      <button type="submit" value="submit" class="btn btn-success">Add All Products</button>
+    </div>
   </form>
   <br>
   <h2>Added Products</h2>
 
-
+  <form class="d-flex mx-auto w-75 mt-5 mb-3" action="<?php echo URLROOT ?>/posts/search" method="post">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_name">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
   <table class="table table-striped">
     <thead>
+      <a href='<?php echo URLROOT; ?>/posts/sortByPriceAsc' class="btn btn-warning btn-sm mr-2">Price Asc</a>
+      <a href='<?php echo URLROOT; ?>/posts/sortByPriceDesc' class="btn btn-warning btn-sm">Price Desc</a>
       <tr>
         <th>ID</th>
         <th>Product Name</th>
@@ -57,8 +87,8 @@
           <td><?= $zedka->price_product ?></td>
           <td><img src="<?= URLROOT . '/img/upload/' . $zedka->img_product ?>" width="50px" style="style=" width:128px;height:128px;object-fit: contain;""></td>
           <td>
-            <button class="btn btn-danger btn-sm">Delete</button>
-            <button class="btn btn-warning btn-sm">Edit</button>
+            <a href='<?php echo URLROOT . "/posts/show/" . $zedka->id_product ?>' class="btn btn-warning btn-sm">Edit</a>
+            <a href='<?php echo URLROOT . "/posts/delete/" . $zedka->id_product ?>' class="btn btn-danger btn-sm">Delete</a>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -67,6 +97,6 @@
 
 
 
-
+  <script src="<?php echo URLROOT; ?>./js/diplicat.js"></script>
 
   <?php require APPROOT . '/views/inc/footer.php'; ?>
